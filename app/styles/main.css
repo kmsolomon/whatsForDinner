@@ -1,6 +1,7 @@
 body {
   padding-top: 20px;
   padding-bottom: 20px;
+  font-size: 16px;
 }
 
 .header,
@@ -47,4 +48,56 @@ body {
   .header {
     margin-bottom: 30px;
   }
+}
+
+.menu div {
+  margin-bottom: 5px;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.menu-days,
+.menu-recipes {
+  padding: 0;
+}
+
+.menu-day {
+  background-color: #B3D4FC;
+  padding: 20px 0;
+}
+
+.menu-recipe {
+  background-color: #CFE5FF;
+  padding: 20px 0;
+}
+
+
+.recipe-details {
+  background-color: #EFF6FF;
+  font-size: 1.0em;
+  margin-bottom: 25px;
+}
+
+.recipe-details div.row {
+  padding: 10px 15px 0px 15px;
+}
+
+.details-name {
+  background-color: #B3D4FC;
+}
+
+.details-name h1 {
+  margin: 10px 0;
+  font-size: 1.6em;
+  font-weight: 400;
+}
+
+.details-ingredients {
+  border-bottom: 1px solid #CFE5FF;
+}
+
+.recipe-headers {
+  margin: 10px 0 15px 0;
+  font-size: 1.0em;
+  font-weight: 500;
 }

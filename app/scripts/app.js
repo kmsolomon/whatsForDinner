@@ -22,7 +22,11 @@ angular
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'MenuCtrl'
+      })
+      .when('/viewrecipe/:recipeId', {
+        templateUrl: 'views/recipe.html',
+        controller: 'RecipeCtrl'
       })
       .otherwise({
         redirectTo: '/'

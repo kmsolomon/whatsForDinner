@@ -1,3 +1,14 @@
-<div>
-<p>List will go here</p>
+<div ng-controller="MenuCtrl as weekmenu">
+  <div class="row menu">
+    <div class="col-md-4 menu-days">
+      <div ng-repeat="day in days">
+        <div class="menu-day">{{day}}</div>
+      </div>
+    </div>
+    <div ui-sortable="sortableOptions" ng-model="menu" class="col-md-8 menu-recipes">
+      <div ng-repeat="menuitem in menu">
+        <div ng-click="viewRecipe(menuitem)" class="menu-recipe">{{menuitem.name}}</div>
+      </div>
+    </div>
+  </div>
 </div>

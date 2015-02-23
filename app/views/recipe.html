@@ -1,0 +1,27 @@
+<div ng-controller="RecipeCtrl as recipe">
+  <div class="row">
+    <div class="col-md-12 recipe-details">
+      <div class="row">
+        <div class="col-md-12 details-name">
+          <h1>{{name}}: {{recipeId}}</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 details-ingredients">
+          <h2 class="recipe-headers">Ingredients</h2>
+          <ul>
+            <li ng-repeat="ingredient in ingredients">{{ingredient.amount}} {{ingredient.name}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 details-steps">
+          <h2 class="recipe-headers">Directions</h2>
+          <ol>
+            <li ng-repeat="step in directions">{{step}}</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
