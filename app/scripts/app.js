@@ -28,6 +28,10 @@ angular
         templateUrl: 'views/recipe.html',
         controller: 'RecipeCtrl'
       })
+      .when('/shoppinglist', {
+        templateUrl: 'views/shoppinglist.html',
+        controller: 'ShoppingListCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

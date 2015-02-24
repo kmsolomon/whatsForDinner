@@ -50,6 +50,30 @@ body {
   }
 }
 
+/************
+ * Navigation
+ ************/
+
+.main-nav {
+  margin-bottom: 20px;
+  
+}
+
+.custom-nav > li > a {
+  background-color: #EFF6FF;
+}
+
+.custom-nav > li > a:hover,
+.custom-nav > li > a:active,
+.custom-nav > li > a:focus {
+  background-color: #428BCA;
+  color: #FFFFFF;
+}
+
+/*********************
+ *  Menu List Styles
+ *********************/
+
 .menu div {
   margin-bottom: 5px;
   font-size: 1.2em;
@@ -68,9 +92,13 @@ body {
 
 .menu-recipe {
   background-color: #CFE5FF;
+  cursor: pointer;
   padding: 20px 0;
 }
 
+/*************************
+ *  Recipe details styles
+ *************************/
 
 .recipe-details {
   background-color: #EFF6FF;
@@ -92,8 +120,12 @@ body {
   font-weight: 400;
 }
 
-.details-ingredients {
+.details-ingredients, .details-steps {
   border-bottom: 1px solid #CFE5FF;
+}
+
+.details-back {
+  margin-bottom: 10px;
 }
 
 .recipe-headers {
@@ -101,3 +133,4 @@ body {
   font-size: 1.0em;
   font-weight: 500;
 }
+
