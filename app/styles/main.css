@@ -75,8 +75,7 @@ body {
  *********************/
 
 .menu div {
-  margin-bottom: 5px;
-  font-size: 1.2em;
+  font-size: 24px;
   text-align: center;
 }
 
@@ -88,12 +87,38 @@ body {
 .menu-day {
   background-color: #B3D4FC;
   padding: 20px 0;
+  margin-bottom: 5px;
 }
 
 .menu-recipe {
   background-color: #CFE5FF;
   cursor: pointer;
+  margin-bottom: 5px;
   padding: 20px 0;
+  position: relative;
+}
+
+.options {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+.options ul li {
+  text-align: left;
+}
+
+.options-menu li {
+  padding: 5px 5px 5px 15px;
+}
+
+.options-menu li:hover {
+  background-color: #E5E5E5;
+}
+
+.empty {
+  height: 74px;
+  background-color: #737373;
 }
 
 /*************************
@@ -134,3 +159,6 @@ body {
   font-weight: 500;
 }
 
+.item-options {
+  float: right;
+}

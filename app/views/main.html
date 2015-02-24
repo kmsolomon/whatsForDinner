@@ -7,7 +7,26 @@
     </div>
     <div ui-sortable="sortableOptions" ng-model="menu" class="col-md-8 menu-recipes">
       <div ng-repeat="menuitem in menu">
-        <div ng-click="viewRecipe(menuitem)" class="menu-recipe">{{menuitem.name}}</div>
+        <div class="menu-recipe" ng-class="{ empty : menuitem.type == 'empty', takeout: menuitem.type == 'takeout' }">
+          <div ng-click="viewRecipe(menuitem)">
+            {{menuitem.name}}
+          </div>           
+          <div class="options">
+            
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                Edit
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu options-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li ng-click="deleteItem(menuitem)">Delete</li>
+                <li ng-click="changeItem(menuitem, 'Leftovers')">Leftovers</li>
+                <li ng-click="changeItem(menuitem, 'Takeout')">Takeout</li>
+              </ul>
+            </div>
+            
+          </div>
+        </div>
       </div>
     </div>
   </div>
