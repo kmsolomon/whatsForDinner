@@ -1,19 +1,8 @@
 'use strict';
 
 angular.module('whatsForDinnerApp')
-  .controller('ShoppingListCtrl', function ($scope) {
-
-    // below here is mock data that we will eventually be fetching
+  .controller('ShoppingListCtrl', ['$scope', 'Recipe', function ($scope, Recipe) {
     
-    $scope.ingredients = [ {
-        name: 'chicken noodle soup',
-        amount: '1 can'
-      },
-      {
-        name: 'can opener',
-        amount: '1'
-      }
+    $scope.ingredients = Recipe.getAllIngredients();
     
-    ];
-    
-  });
+  }]);

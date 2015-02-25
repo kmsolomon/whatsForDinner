@@ -1,29 +1,10 @@
 'use strict';
 
 angular.module('whatsForDinnerApp')
-  .controller('RecipeCtrl', function ($scope, $routeParams) {
+  .controller('RecipeCtrl', ['$scope', '$routeParams', 'Recipe', function ($scope, $routeParams, Recipe) {
     
-    $scope.recipeId = $routeParams.recipeId;
-    
-    
-    // below here is mock data that we will eventually be fetching
-    $scope.name = 'My Recipe';
-    
-    $scope.ingredients = [ {
-        name: 'chicken noodle soup',
-        amount: '1 can'
-      },
-      {
-        name: 'can opener',
-        amount: '1'
-      }
-    
-    ];
-    
-    $scope.directions = [
-        'Grab can opener.',
-        'Open can of soup.',
-        'Eat soup.'    
-    ];
-    
-  });
+    $scope.recipeId = parseInt($routeParams.recipeId, 10);
+
+    $scope.recipe = Recipe.getRecipe($scope.recipeId);
+
+  }]);
