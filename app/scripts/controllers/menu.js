@@ -16,7 +16,7 @@ angular.module('whatsForDinnerApp')
     $scope.menu = Recipe.getRecipesList();
     
     $scope.viewRecipe = function(recipe){
-      if(recipe.recipeId !== null) {
+      if(recipe.type === 'recipe') {
         var path = '/viewrecipe/' + recipe.recipeId;
         $location.path(path);
       }
@@ -36,7 +36,7 @@ angular.module('whatsForDinnerApp')
     $scope.changeItem = function(recipe, changeTo){
       var changes = {
         name: changeTo,
-        recipeId: null,
+        recipeId: (changeTo === 'Takeout') ? 'T' : 'L',
         type: (changeTo === 'Takeout') ? 'takeout' : 'leftovers',
         ingredients: [],
         steps: []

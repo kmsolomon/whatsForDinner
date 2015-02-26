@@ -1,135 +1,58 @@
 'use strict';
 
-var recipeService = angular.module('recipeService', ['ngResource']);
+var recipeService = angular.module('recipeService', []);
 
-recipeService.factory('Recipe', ['$resource', function($resource) {
+recipeService.factory('Recipe', ['$http', function($http) {
   
-  // mock data for now
-   var recipes = [
-      {
-        name: 'Item 1',
-        recipeId: 1,
-        type: 'recipe',
-        ingredients: [
-          {
-            name: 'chicken noodle soup',
-            amount: '1 can'
-          },
-          {
-            name: 'can opener',
-            amount: '1'
-          }
-        ],
-        steps: [
-          'Grab can opener.',
-          'Open can of soup.',
-          'Eat soup.'    
-        ]
-      },
-      {
-        name: 'Item 2',
-        recipeId: 2,
-        type: 'recipe',
-        ingredients: [
-          {
-            name: 'tomato soup',
-            amount: '1 can'
-          },
-          {
-            name: 'can opener',
-            amount: '1'
-          }
-        ]
-      },
-      {
-        name: 'Item 3',
-        recipeId: 3,
-        type: 'recipe',
-        ingredients: [
-          {
-            name: 'vegetable soup',
-            amount: '1 can'
-          },
-          {
-            name: 'can opener',
-            amount: '1'
-          }
-        ]
-      },
-      {
-        name: 'Item 4',
-        recipeId: 4,
-        type: 'recipe',
-        ingredients: [
-          {
-            name: 'chicken noodle soup',
-            amount: '1 can'
-          },
-          {
-            name: 'can opener',
-            amount: '1'
-          }
-        ]
-      },
-      {
-        name: 'Item 5',
-        recipeId: 5,
-        type: 'recipe',
-        ingredients: [
-          {
-            name: 'tomato soup',
-            amount: '1 can'
-          },
-          {
-            name: 'can opener',
-            amount: '1'
-          }
-        ]
-      },
-      {
-        name: 'Item 6',
-        recipeId: 6,
-        type: 'recipe',
-        ingredients: [
-          {
-            name: 'chicken noodle soup',
-            amount: '1 can'
-          },
-          {
-            name: 'can opener',
-            amount: '1'
-          }
-        ]
-      },
-      {
-        name: 'Item 7',
-        recipeId: 7,
-        type: 'recipe',
-        ingredients: [
-          {
-            name: 'chicken noodle soup',
-            amount: '1 can'
-          },
-          {
-            name: 'can opener',
-            amount: '1'
-          }
-        ]
-      }
-   
-   ];
+   var recipes = null;
   
    return {
       getNewRecipes: function() {
          // Fill recipes array full of 7 recipes.
+         $http.get('recipeslist.php', {
+           params: {
+             newlist: true
+           }
+         })
+         .success(function(data) {
+              recipes = data;
+          });
       },
       replaceEmptyRecipes: function() {
         // Fill in any empty spots in the recipes list.
+        var returnedRecipes = [];
+        $http.get('recipeslist.php', {
+          // pass along all the ids in use so we don't get duplicates and know which days are empty (null ids)
+          params: {
+            mon: recipes[0].recipeId,
+            tues: recipes[1].recipeId,
+            wed: recipes[2].recipeId,
+            thurs: recipes[3].recipeId,
+            fri: recipes[4].recipeId,
+            sat: recipes[5].recipeId,
+            sund: recipes[6].recipeId
+          }
+        })
+        .success(function(data) {
+           returnedRecipes = data;
+           console.log(returnedRecipes);
+           // Then put returnedRecipes in the proper spots
+        });
       },
       getRecipesList: function() {
         // Return the current list of recipes 
-        
-        // if null, need to get a set of recipes
+        if(recipes === null){
+          $http.get('recipeslist.php', {
+            params: {
+              newlist: true
+            }
+          })
+          .success(function(data) {
+            console.log('successfully got recipes');
+            console.log(data);
+            recipes = data;
+          });
+        }
         
         return recipes;
       },
@@ -143,6 +66,30 @@ recipeService.factory('Recipe', ['$resource', function($resource) {
       },
       replaceRecipe: function(recipe) {
         // get a different recipe to replace the passed in recipe
+        $http.get('recipeslist.php', {
+          // pass along all the ids in use so we don't get duplicates
+          params: {
+            mon: recipes[0].recipeId,
+            tues: recipes[1].recipeId,
+            wed: recipes[2].recipeId,
+            thurs: recipes[3].recipeId,
+            fri: recipes[4].recipeId,
+            sat: recipes[5].recipeId,
+            sund: recipes[6].recipeId,
+            replacethis: recipe.recipeId // only need want one new recipe sent back, ignore blank spaces if they are there
+          }
+        })
+        .success(function(data) {
+          console.log(data);
+          /*
+           * recipe.name = data.name;
+           * recipe.recipeId = data.recipeId;
+           * recipe.type = 'recipe';
+           * recipe.ingredients = data.ingredients;
+           * recipe.steps = data.steps;
+           */
+
+        });
         
       },
       getRecipe: function(recipeId) {
