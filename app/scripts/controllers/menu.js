@@ -48,6 +48,14 @@ angular.module('whatsForDinnerApp')
       Recipe.replaceRecipe(recipe, index);
     };
     
+    $scope.fillBlanks = function() {
+      
+    };
+    
+    $scope.newMenu = function() {
+      Recipe.getNewRecipes();
+    };
+    
     $scope.sortableOptions = {
       helper: 'clone'
     };

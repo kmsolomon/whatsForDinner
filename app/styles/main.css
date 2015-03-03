@@ -57,6 +57,7 @@ body {
 
 .main-nav {
   margin-bottom: 20px;
+  float: left;
   
 }
 
@@ -74,7 +75,9 @@ body {
 /*********************
  *  Menu List Styles
  *********************/
-
+.menu {
+  clear: both;
+}
 .menu div {
   font-size: 24px;
   text-align: center;
@@ -98,6 +101,11 @@ body {
   min-height: 1px;
   padding: 20px 0;
   position: relative;
+}
+
+.menu-controls {
+  float: right;
+  margin: 10px 0;
 }
 
 .options {

@@ -13,10 +13,9 @@ recipeService.factory('Recipe', ['$http', function($http) {
       }
     })
     .success(function(data) {
-    //  recipes = data;
-        data.forEach(function (recipe) {
-            recipes.push(recipe);
-        });
+        for(var i = 0; i < 7; i++){
+          recipes[i] = data[i];
+        }
     });
   };
   var replaceEmptyRecipes = function() {
@@ -36,7 +35,6 @@ recipeService.factory('Recipe', ['$http', function($http) {
     })
     .success(function(data) {
        returnedRecipes = data;
-       console.log(returnedRecipes);
        // Then put returnedRecipes in the proper spots
     });
   };
