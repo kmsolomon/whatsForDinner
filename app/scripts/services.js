@@ -5,7 +5,6 @@ var recipeService = angular.module('recipeService', []);
 recipeService.factory('Recipe', ['$http', function($http) {
   
   var recipes = [];
-  var tmp = [];
   var getNewRecipes = function() {
     // Fill recipes array full of 7 recipes.
     $http.get('recipeslist.php', {
@@ -41,22 +40,7 @@ recipeService.factory('Recipe', ['$http', function($http) {
        // Then put returnedRecipes in the proper spots
     });
   };
-  var getRecipesList = function() {
-    // Return the current list of recipes 
-    // if(recipes.length === 0){
-      // $http.get('/app/recipeslist.php', {
-        // params: {
-          // newlist: true
-        // }
-      // })
-      // .success(function(data) {
-        // console.log(data);
-        // data.forEach(function (recipe) {
-            // recipes.push(recipe);
-        // });
-      // });
-    // }
-    
+  var getRecipesList = function() {    
     return recipes;
   };
   
@@ -69,9 +53,9 @@ recipeService.factory('Recipe', ['$http', function($http) {
     recipe.steps = changes.steps;
   };
   
-  var replaceRecipe = function(recipe) {
+  var replaceRecipe = function(recipe, index) {
     // get a different recipe to replace the passed in recipe
-    var newrecipe = null;
+
     $http.get('recipeslist.php', {
       // pass along all the ids in use so we don't get duplicates
       params: {
@@ -86,11 +70,8 @@ recipeService.factory('Recipe', ['$http', function($http) {
       }
     })
     .success(function(data) {
-      // BROKEN
-      data.forEach(function (recipe) {
-        tmp.push(recipe);
-      });
-      return data;
+      // replace with the new recipe
+      recipes[index] = data[0];
     });     
   };
   
@@ -129,7 +110,6 @@ recipeService.factory('Recipe', ['$http', function($http) {
       modifyRecipe: modifyRecipe,
       replaceRecipe: replaceRecipe,
       getRecipe: getRecipe,
-      getAllIngredients: getAllIngredients,
-      tmp: tmp
+      getAllIngredients: getAllIngredients
     };
    }]);

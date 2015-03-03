@@ -44,8 +44,8 @@ angular.module('whatsForDinnerApp')
       Recipe.modifyRecipe(recipe, changes);
     };
     
-    $scope.replaceRecipe = function(recipe) {
-      Recipe.replaceRecipe(recipe); // BROKEN
+    $scope.replaceRecipe = function(recipe, index) {
+      Recipe.replaceRecipe(recipe, index);
     };
     
     $scope.sortableOptions = {
