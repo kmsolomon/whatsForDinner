@@ -20,7 +20,7 @@ recipeService.factory('Recipe', ['$http', function($http) {
   };
   var replaceEmptyRecipes = function() {
     // Fill in any empty spots in the recipes list.
-    var returnedRecipes = [];
+
     $http.get('recipeslist.php', {
       // pass along all the ids in use so we don't get duplicates and know which days are empty (null ids)
       params: {
@@ -34,8 +34,12 @@ recipeService.factory('Recipe', ['$http', function($http) {
       }
     })
     .success(function(data) {
-       returnedRecipes = data;
-       // Then put returnedRecipes in the proper spots
+       // Then fill in the empty spots
+       for(var i = 0; i < 7; i++){
+         if(recipes[i].type === 'empty'){
+           recipes[i] = data.pop();
+         }
+       }
     });
   };
   var getRecipesList = function() {    

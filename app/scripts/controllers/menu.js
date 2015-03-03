@@ -49,7 +49,7 @@ angular.module('whatsForDinnerApp')
     };
     
     $scope.fillBlanks = function() {
-      
+      Recipe.replaceEmptyRecipes();
     };
     
     $scope.newMenu = function() {
