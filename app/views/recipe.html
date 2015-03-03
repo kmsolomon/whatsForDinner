@@ -18,7 +18,7 @@
         <div class="col-md-12 details-steps">
           <h2 class="recipe-headers">Directions</h2>
           <ol>
-            <li ng-repeat="step in recipe.steps">{{step}}</li>
+            <li ng-bind-html="step" ng-repeat="step in recipe.steps">{{step}}</li>
           </ol>
         </div>
       </div>
