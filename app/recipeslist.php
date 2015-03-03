@@ -126,9 +126,9 @@
     // Get 7 recipes, return them  
     
     for($i = 0; $i < 7; $i++) {
-      $randnum = rand(0, count($allRecipeIds));
+      $randnum = rand(1, count($allRecipeIds));
       while(in_array($randnum, $idsInUse)){
-        $randnum = rand(0, count($allRecipeIds));
+        $randnum = rand(1, count($allRecipeIds));
       }
       $resultRecipes[] = getRecipe($randnum, $mysqli);
       $idsInUse[] = $randnum;
@@ -137,11 +137,13 @@
       
   } else if(isset($_GET['replacethis'])) {
     // we just need to return 1 recipe
-    $randnum = rand(0, count($allRecipeIds));
+    $randnum = rand(1, count($allRecipeIds));
     while(in_array($randnum, $idsInUse)){
-      $randnum = rand(0, count($allRecipeIds));
+      $randnum = rand(1, count($allRecipeIds));
     }
-    $resultRecipes[] = getRecipe($randnum, $mysqli);
+    $returnedRecipe = getRecipe($randnum, $mysqli);
+    $returnedRecipe['replaceId'] = $_GET['replacethis'];
+    $resultRecipes[] = $returnedRecipe;
     $idsInUse[] = $randnum;
 
     
@@ -150,9 +152,9 @@
     for($i = 0; $i < 7; $i++){
       if($idsInUse[$i] == null){
         
-        $randnum = rand(0, count($allRecipeIds));
+        $randnum = rand(1, count($allRecipeIds));
         while(in_array($randnum, $idsInUse)){
-          $randnum = rand(0, count($allRecipeIds));
+          $randnum = rand(1, count($allRecipeIds));
         }
         $resultRecipes[] = getRecipe($randnum, $mysqli);
         $idsInUse[] = $randnum;
