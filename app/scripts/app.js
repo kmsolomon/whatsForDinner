@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.sortable',
-    'recipeService'
+    'recipeService',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -32,6 +33,10 @@ angular
       .when('/shoppinglist', {
         templateUrl: 'views/shoppinglist.html',
         controller: 'ShoppingListCtrl'
+      })
+      .when('/newrecipe', {
+        templateUrl: 'views/newrecipe.html',
+        controller: 'NewRecipeCtrl'
       })
       .otherwise({
         redirectTo: '/'

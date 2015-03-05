@@ -182,3 +182,75 @@ body {
 .item-options {
   float: right;
 }
+
+/**********
+ *  New Recipe
+ **********/
+
+.new-recipe {
+  margin-bottom: 10px;
+}
+
+.ingredients-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.ingredients-list li {
+  border: 1px solid #CCCCCC;
+  border-radius: 4px;
+  height: 37px;
+  margin-bottom: 8px;
+  padding: 5px;
+  position: relative;
+  width: 400px;
+}
+
+.steps-list {
+  padding-left: 20px;
+}
+
+.steps-list li {
+  border: 1px solid #CCCCCC;
+  border-radius: 4px;
+  min-height: 37px;
+  margin-bottom: 8px;
+  padding: 5px 35px 5px 5px;
+  position: relative;
+  width: 100%;
+  word-wrap: break-word
+}
+
+.delete-ingredient-btn,
+.delete-step-btn {
+  height: 35px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 35px;
+
+}
+
+.ingredients-h1,
+.steps-h1 {
+  font-size: 20px;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.add-ingredient,
+.add-step {
+  margin-bottom: 25px;
+}
+
+.add-ingredient h2 {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+#ingredientname {
+  width: 400px;
+}
+
+.add-step-textarea {
+  margin-bottom: 5px;
+}

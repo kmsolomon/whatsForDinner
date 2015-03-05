@@ -5,6 +5,7 @@ var recipeService = angular.module('recipeService', []);
 recipeService.factory('Recipe', ['$http', function($http) {
   
   var recipes = [];
+  var ingredientsList = [];
   var getNewRecipes = function() {
     // Fill recipes array full of 7 recipes.
     $http.get('recipeslist.php', {
@@ -103,7 +104,27 @@ recipeService.factory('Recipe', ['$http', function($http) {
       
   };
   
+  var getAllIngredientsInDB = function() {
+    $http.get('fetchIngredients.php', {
+      params: {
+        }
+      })
+      .success(function(data) {
+        for(var i = 0; i < data.length; i++){
+          ingredientsList[i] = data[i];
+        }
+  
+    });
+  };
+  
+  
+  var getIngredientsList = function() {
+    return ingredientsList;
+  };
+  
+  
   getNewRecipes();
+  getAllIngredientsInDB();
   
    return {
       getNewRecipes: getNewRecipes,
@@ -112,6 +133,8 @@ recipeService.factory('Recipe', ['$http', function($http) {
       modifyRecipe: modifyRecipe,
       replaceRecipe: replaceRecipe,
       getRecipe: getRecipe,
-      getAllIngredients: getAllIngredients
+      getAllIngredients: getAllIngredients,
+      getAllIngredientsInDB: getAllIngredientsInDB,
+      getIngredientsList: getIngredientsList
     };
    }]);
