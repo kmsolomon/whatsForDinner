@@ -122,6 +122,20 @@ recipeService.factory('Recipe', ['$http', function($http) {
     return ingredientsList;
   };
   
+  var addRecipe = function(recipe) {
+    $http.post('addrecipe.php', recipe)
+    .success(function()
+    {
+      return 'Recipe was successfully added';
+    })
+    .error(function()
+    {
+      console.log('There was an error adding the new recipe');
+    });
+
+    
+  };
+  
   
   getNewRecipes();
   getAllIngredientsInDB();
@@ -135,6 +149,7 @@ recipeService.factory('Recipe', ['$http', function($http) {
       getRecipe: getRecipe,
       getAllIngredients: getAllIngredients,
       getAllIngredientsInDB: getAllIngredientsInDB,
-      getIngredientsList: getIngredientsList
+      getIngredientsList: getIngredientsList,
+      addRecipe: addRecipe
     };
    }]);

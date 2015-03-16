@@ -1,9 +1,9 @@
 <div ng-controller="NewRecipeCtrl as newrecipe">
   <div class="row">
     <div class="col-md-12 new-recipe">
-      <form>
+      <form ng-submit="submit()">
         <div class="form-group">
-          <label for="recipeName">Recipe Name</label>
+          <label for="recipeName" class="recipe-name-label">Recipe Name</label>
           <input type="text" class="form-control" id="recipeName" ng-model="recipe.name" placeholder="Recipe Name" required>
         </div>
         
@@ -16,12 +16,12 @@
                 <div class="form-inline">
                   <input type="text" class="form-control amount-input" id="amount" ng-model="newIngredient.amount" placeholder="Amount">
                   <input type="text" class="form-control ingredient-name-input" id="ingredientname" ng-model="newIngredient.name" placeholder="Ingredient" typeahead="ingred.name for ingred in ingredients | filter:$viewValue | limitTo:8">
-                  <button ng-click="addIngredient()" class="btn btn-primary add-ingredient-btn">Add</button>
+                  <button type="button" ng-click="addIngredient()" class="btn btn-primary add-ingredient-btn">Add</button>
                 </div>
               </div>
               <ul class="ingredients-list">
                 <li class="new-recipe-ingredient" ng-repeat="ingredient in recipe.ingredients">{{ingredient.amount}} {{ingredient.name}} 
-                  <button ng-click="removeIngredient($index)" class="delete-ingredient-btn btn btn-danger">X</button></li>
+                  <button type="button" ng-click="removeIngredient($index)" class="delete-ingredient-btn btn btn-danger">X</button></li>
               </ul>
             </div>
           </div>      
@@ -34,11 +34,11 @@
               <div class="add-step">
                 <label for="addStep">Add Step</label>
                 <textarea class="form-control add-step-textarea" rows="2" id="addStep" ng-model="newStep" placeholder="New Step"></textarea>
-                <button ng-click="addStep()" class="btn btn-primary add-step-btn">Add</button>
+                <button type="button" ng-click="addStep()" class="btn btn-primary add-step-btn">Add</button>
               </div>
               <ol class="steps-list">
                 <li class="new-recipe-step" ng-repeat="step in recipe.steps">{{step}} 
-                  <button ng-click="removeStep($index)" class="delete-step-btn btn btn-danger">X</button></li>
+                  <button type="button" ng-click="removeStep($index)" class="delete-step-btn btn btn-danger">X</button></li>
               </ol>
             </div>
           </div>      

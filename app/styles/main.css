@@ -237,6 +237,10 @@ body {
   border-bottom: 1px solid #E5E5E5;
 }
 
+.recipe-name-label {
+  font-size: 20px;
+}
+
 .add-ingredient,
 .add-step {
   margin-bottom: 25px;

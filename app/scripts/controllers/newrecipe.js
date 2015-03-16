@@ -18,6 +18,15 @@ angular.module('whatsForDinnerApp')
   
   $scope.newStep ='';
   
+  $scope.checkId = function(name){
+    for(var i = 0; i < $scope.ingredients.length; i++){
+      if($scope.ingredients[i].name === name){
+        return $scope.ingredients[i].id;
+      }
+    }
+    return '';
+  };
+  
   $scope.removeIngredient = function(index) {
      $scope.recipe.ingredients.splice(index, 1);
   };
@@ -26,7 +35,8 @@ angular.module('whatsForDinnerApp')
     if($scope.newIngredient.name !== ''){
       var ingredient ={
         name: $scope.newIngredient.name,
-        amount: $scope.newIngredient.amount
+        amount: $scope.newIngredient.amount,
+        id: $scope.checkId($scope.newIngredient.name)
         
       };
       $scope.recipe.ingredients.push(ingredient);
@@ -47,6 +57,10 @@ angular.module('whatsForDinnerApp')
     $scope.recipe.steps.splice(index, 1);
   };
   
+  $scope.submit = function() {
+    Recipe.addRecipe($scope.recipe);
+    
+  };
   
 
   }]);
