@@ -258,3 +258,18 @@ body {
 .add-step-textarea {
   margin-bottom: 5px;
 }
+
+
+.status-success {
+  background-color: #BFFFD4;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.status-error {
+  background-color: #FFBFBF;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  padding: 5px;
+}

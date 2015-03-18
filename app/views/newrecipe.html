@@ -1,7 +1,10 @@
 <div ng-controller="NewRecipeCtrl as newrecipe">
   <div class="row">
     <div class="col-md-12 new-recipe">
-      <form ng-submit="submit()">
+      <div ng-class="{'status-success': status == 'Recipe added' , 'status-error': status == 'There was an error adding the recipe'} ">
+        {{status}}
+      </div>
+      <form name="addRecipe" ng-submit="submit()">
         <div class="form-group">
           <label for="recipeName" class="recipe-name-label">Recipe Name</label>
           <input type="text" class="form-control" id="recipeName" ng-model="recipe.name" placeholder="Recipe Name" required>

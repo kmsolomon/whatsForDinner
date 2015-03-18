@@ -123,17 +123,7 @@ recipeService.factory('Recipe', ['$http', function($http) {
   };
   
   var addRecipe = function(recipe) {
-    $http.post('addrecipe.php', recipe)
-    .success(function()
-    {
-      return 'Recipe was successfully added';
-    })
-    .error(function()
-    {
-      console.log('There was an error adding the new recipe');
-    });
-
-    
+    return $http.post('addrecipe.php', recipe);
   };
   
   

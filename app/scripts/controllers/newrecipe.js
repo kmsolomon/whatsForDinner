@@ -18,6 +18,8 @@ angular.module('whatsForDinnerApp')
   
   $scope.newStep ='';
   
+  $scope.status = '';
+  
   $scope.checkId = function(name){
     for(var i = 0; i < $scope.ingredients.length; i++){
       if($scope.ingredients[i].name === name){
@@ -58,7 +60,31 @@ angular.module('whatsForDinnerApp')
   };
   
   $scope.submit = function() {
-    Recipe.addRecipe($scope.recipe);
+    Recipe.addRecipe($scope.recipe)
+    .success(function(){
+      $scope.status = 'Recipe added';
+      $scope.addRecipe.$setPristine();
+      $scope.ingredients = Recipe.getIngredientsList();
+    
+      $scope.recipe = {
+        name: '',
+        steps: [],
+        ingredients: []
+      };
+      
+      $scope.newIngredient = {
+        name: '',
+        amount: ''
+      };
+      
+      $scope.newStep ='';
+      
+      
+    })
+    .error(function(data, status){
+      $scope.status = 'There was an error adding the recipe';
+      console.log(status);
+    });
     
   };
   
