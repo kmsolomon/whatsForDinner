@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('whatsForDinnerApp')
-  .controller('MenuCtrl', ['$scope', '$location', 'Recipe' ,function ($scope, $location, Recipe) {
+  .controller('MenuCtrl', ['$scope', '$window', '$location', 'Recipe' ,function ($scope, $window, $location, Recipe) {
     $scope.days = [
     'Monday',
     'Tuesday',
@@ -12,7 +12,6 @@ angular.module('whatsForDinnerApp')
     'Sunday'
     ];
     
-    // this will be retrieved from the DB later, using mock data for now
     $scope.menu = Recipe.getRecipesList();
     
     $scope.viewRecipe = function(recipe){
@@ -21,6 +20,8 @@ angular.module('whatsForDinnerApp')
         $location.path(path);
       }
     };
+    
+    $scope.url = '';
     
     $scope.deleteItem = function(recipe){
       var changes = {
@@ -58,5 +59,27 @@ angular.module('whatsForDinnerApp')
     
     $scope.sortableOptions = {
       helper: 'clone'
+    };
+    
+    $scope.generateShareUrl = function() {
+      var dayAbrev = ['mon', 'tues', 'wed', 'thurs', 'fri', 'sat', 'sun'];
+      var url = document.URL + 'viewmenu?';
+      for(var i=0; i < 7; i++){
+        if(i > 0){
+          url += '&';
+        }
+        url += dayAbrev[i] + '=';
+        var day = $scope.menu[i];
+        if(day.type === 'recipe'){
+          url += day.recipeId;
+        } else {
+          url += day.type;
+        }
+      }
+      $scope.url = url;
+    };
+    
+    $scope.openStaticMenuTab = function() {
+      $window.open($scope.url, '_blank');
     };
   }]);
