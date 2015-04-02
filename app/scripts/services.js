@@ -126,6 +126,22 @@ recipeService.factory('Recipe', ['$http', function($http) {
     return $http.post('addrecipe.php', recipe);
   };
   
+  var getRecipes = function(ids) {
+    return $http.get('recipeslist.php', {
+      // pass along all the ids in use so we don't get duplicates
+      params: {
+        mon: ids.mon,
+        tues: ids.tues,
+        wed: ids.wed,
+        thurs: ids.thurs,
+        fri: ids.fri,
+        sat: ids.sat,
+        sund: ids.sun,
+        fetchrecipes: true // only need want one new recipe sent back, ignore blank spaces if they are there
+      }
+    });   
+  };
+  
   
   getNewRecipes();
   getAllIngredientsInDB();
@@ -137,6 +153,7 @@ recipeService.factory('Recipe', ['$http', function($http) {
       modifyRecipe: modifyRecipe,
       replaceRecipe: replaceRecipe,
       getRecipe: getRecipe,
+      getRecipes: getRecipes,
       getAllIngredients: getAllIngredients,
       getAllIngredientsInDB: getAllIngredientsInDB,
       getIngredientsList: getIngredientsList,

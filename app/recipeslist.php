@@ -147,6 +147,21 @@
     $idsInUse[] = $randnum;
 
     
+  } else if(isset($_GET['fetchrecipes'])) {
+    // we need to get the specified recipes
+    
+    foreach ($idsInUse as $day) {
+      if($day == 'T' || $day == 't'){
+        $resultRecipes[] = array("recipeId" => $day, "type" => 'takeout');
+      } else if ($day == 'L' || $day == 'l') {
+        $resultRecipes[] = array("recipeId" => $day, "type" => 'leftovers');
+      } else if ($day == 'null') {
+        $resultRecipes[] = array("recipeId" => $day, "type" => 'empty');
+      } else {
+        $resultRecipes[] = getRecipe($day, $mysqli);
+      }
+    }
+    
   } else {
     // replace x number of empty recipes, trying not to pick ones already in use
     for($i = 0; $i < 7; $i++){

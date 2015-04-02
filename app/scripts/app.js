@@ -38,6 +38,10 @@ angular
         templateUrl: 'views/newrecipe.html',
         controller: 'NewRecipeCtrl'
       })
+      .when('/viewmenu', {
+        templateUrl: 'views/viewmenu.html',
+        controller: 'ViewMenuCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

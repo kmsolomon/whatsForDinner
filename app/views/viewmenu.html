@@ -1,0 +1,42 @@
+<div ng-controller="ViewMenuCtrl as weekmenu">
+  <div class="menu">
+    <div class="day-column menu-days">
+      <div ng-repeat="day in days">
+        <div class="menu-day">{{day}}</div>
+      </div>
+    </div>
+    <div ng-model="menu" class="recipe-column menu-recipes">
+      <div ng-repeat="menuitem in menu">
+        <div class="menu-recipe" ng-class="{ empty : menuitem.type == 'empty', takeout: menuitem.type == 'takeout' }">
+          <div ng-click="viewRecipe(menuitem)">
+            {{menuitem.name}}
+          </div>           
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="menu-controls">
+    <button class="btn btn-success" ng-click="generateShareUrl()" data-toggle="modal" data-target="#shareModal">Share</button>
+  </div>
+  <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="shareModelLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="shareModalLabel">Share Menu</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="shareUrl">This menu can be viewed at:</label>
+          <input type="text" class="form-control" id="shareUrl" ng-model="url">
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="openStaticMenuTab()">Open In New Tab</button>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

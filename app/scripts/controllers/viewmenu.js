@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('whatsForDinnerApp')
-  .controller('MenuCtrl', ['$scope', '$window', '$location', 'Recipe' ,function ($scope, $window, $location, Recipe) {
+  .controller('ViewMenuCtrl', ['$scope', '$window', '$location', '$routeParams', 'Recipe' ,function ($scope, $window, $location, $routeParams, Recipe) {
     $scope.days = [
     'Monday',
     'Tuesday',
@@ -12,7 +12,52 @@ angular.module('whatsForDinnerApp')
     'Sunday'
     ];
     
-    $scope.menu = Recipe.getRecipesList();
+    var ids = {
+      mon: $routeParams.mon,
+      tues: $routeParams.tues,
+      wed: $routeParams.wed,
+      thurs: $routeParams.thurs,
+      fri: $routeParams.fri,
+      sat: $routeParams.sat,
+      sun: $routeParams.sun
+      
+    };
+    
+    $scope.menu = [];
+    
+    $scope.fetchRecipes = function(){
+      Recipe.getRecipes(ids)
+      .success(function(data){
+        for(var i = 0; i < data.length; i++){
+          if(data[i].type !== 'recipe'){
+            var tmp = {
+              name: '',
+              recipeId: data[i].recipeId,
+              type: data[i].type,
+              ingredients: [],
+              steps: []
+            };
+            
+            if(tmp.type === 'leftovers'){
+              tmp.name = 'Leftovers';
+            } else if (tmp.type === 'takeout'){
+              tmp.name = 'Takeout';
+            } else {
+              tmp.name = '';
+            }
+            $scope.menu.push(tmp);
+          } else {
+            $scope.menu.push(data[i]); 
+          }
+        }
+        
+      })
+      .error(function(data, status){
+        console.log(status);
+      });
+    };
+   
+   $scope.fetchRecipes();
     
     $scope.viewRecipe = function(recipe){
       if(recipe.type === 'recipe') {
@@ -70,7 +115,11 @@ angular.module('whatsForDinnerApp')
         }
         url += dayAbrev[i] + '=';
         var day = $scope.menu[i];
-        url += day.recipeId;
+        if(day.type === 'recipe'){
+          url += day.recipeId;
+        } else {
+          url += day.type;
+        }
       }
       $scope.url = url;
     };
