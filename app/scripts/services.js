@@ -79,12 +79,25 @@ recipeService.factory('Recipe', ['$http', function($http) {
   };
   
   var getRecipe = function(recipeId) {
-    // return the details for one specified recipe 
+    // return the details for one specified recipe from the recipe list
     for(var i = 0; i < recipes.length; i++){
       if(recipeId === recipes[i].recipeId){
         return recipes[i];
       }
-    }      
+    }     
+    return null;
+  };
+  
+  var lookupRecipe = function(recipeId) {
+    // lookup and return one specified recipe from the db
+    return $http.get('recipeslist.php', {
+      // pass along all the ids in use so we don't get duplicates
+      params: {
+        recipe: recipeId,
+        fetchrecipes: true
+        
+      }
+    });
   };
   
   var getAllIngredients = function() {
@@ -137,7 +150,7 @@ recipeService.factory('Recipe', ['$http', function($http) {
         fri: ids.fri,
         sat: ids.sat,
         sund: ids.sun,
-        fetchrecipes: true // only need want one new recipe sent back, ignore blank spaces if they are there
+        fetchrecipes: true 
       }
     });   
   };
@@ -153,6 +166,7 @@ recipeService.factory('Recipe', ['$http', function($http) {
       modifyRecipe: modifyRecipe,
       replaceRecipe: replaceRecipe,
       getRecipe: getRecipe,
+      lookupRecipe: lookupRecipe,
       getRecipes: getRecipes,
       getAllIngredients: getAllIngredients,
       getAllIngredientsInDB: getAllIngredientsInDB,

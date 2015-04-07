@@ -149,17 +149,20 @@
     
   } else if(isset($_GET['fetchrecipes'])) {
     // we need to get the specified recipes
-    
-    foreach ($idsInUse as $day) {
-      if($day == 'T' || $day == 't'){
-        $resultRecipes[] = array("recipeId" => $day, "type" => 'takeout');
-      } else if ($day == 'L' || $day == 'l') {
-        $resultRecipes[] = array("recipeId" => $day, "type" => 'leftovers');
-      } else if ($day == 'null') {
-        $resultRecipes[] = array("recipeId" => $day, "type" => 'empty');
-      } else {
-        $resultRecipes[] = getRecipe($day, $mysqli);
+    if($idsInUse){
+      foreach ($idsInUse as $day) {
+        if($day == 'T' || $day == 't'){
+          $resultRecipes[] = array("recipeId" => $day, "type" => 'takeout');
+        } else if ($day == 'L' || $day == 'l') {
+          $resultRecipes[] = array("recipeId" => $day, "type" => 'leftovers');
+        } else if ($day == 'null') {
+          $resultRecipes[] = array("recipeId" => $day, "type" => 'empty');
+        } else {
+          $resultRecipes[] = getRecipe($day, $mysqli);
+        }
       }
+    } else {
+       $resultRecipes[] = getRecipe($_GET['recipe'], $mysqli);
     }
     
   } else {

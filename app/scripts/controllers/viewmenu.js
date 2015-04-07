@@ -61,8 +61,7 @@ angular.module('whatsForDinnerApp')
     
     $scope.viewRecipe = function(recipe){
       if(recipe.type === 'recipe') {
-        var path = '/viewrecipe/' + recipe.recipeId;
-        $location.path(path);
+        $location.url('/viewrecipe/' + recipe.recipeId);
       }
     };
     
