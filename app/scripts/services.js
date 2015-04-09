@@ -155,6 +155,23 @@ recipeService.factory('Recipe', ['$http', function($http) {
     });   
   };
   
+  var searchAllIngredientsFor = function(ids) {
+    return $http.get('recipeslist.php', {
+     
+      params: {
+        mon: ids.mon,
+        tues: ids.tues,
+        wed: ids.wed,
+        thurs: ids.thurs,
+        fri: ids.fri,
+        sat: ids.sat,
+        sund: ids.sun,
+        fetchingredients: true 
+      }
+    });  
+    
+  };
+  
   
   getNewRecipes();
   getAllIngredientsInDB();
@@ -171,6 +188,7 @@ recipeService.factory('Recipe', ['$http', function($http) {
       getAllIngredients: getAllIngredients,
       getAllIngredientsInDB: getAllIngredientsInDB,
       getIngredientsList: getIngredientsList,
-      addRecipe: addRecipe
+      addRecipe: addRecipe,
+      searchAllIngredientsFor: searchAllIngredientsFor
     };
    }]);
