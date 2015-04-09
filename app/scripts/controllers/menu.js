@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('whatsForDinnerApp')
-  .controller('MenuCtrl', ['$scope', '$window', '$location', 'Recipe' ,function ($scope, $window, $location, Recipe) {
+  .controller('MenuCtrl', ['$scope', '$rootScope', '$window', '$location', 'Recipe' ,function ($scope, $rootScope, $window, $location, Recipe) {
     $scope.days = [
     'Monday',
     'Tuesday',
@@ -12,6 +12,7 @@ angular.module('whatsForDinnerApp')
     'Sunday'
     ];
     
+    $rootScope.params = '';
     $scope.menu = Recipe.getRecipesList();
     
     $scope.viewRecipe = function(recipe){

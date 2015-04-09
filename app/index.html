@@ -23,13 +23,13 @@
     <!-- Add your site or application content here -->
     <div class="container">
       <div class="header">
-        <h3 class="text-muted">What's For Dinner?</h3>
+        <h3 class="text-muted"><a href="#/main">What's For Dinner?</a></h3>
       </div>
-      <div class="main-nav">
+      <div ng-controller="MainCtrl as mainctrl" class="main-nav">
         <nav>
           <ul class="nav nav-pills custom-nav">
-            <li><a href="#/main">Menu</a></li>
-            <li><a href="#/shoppinglist">Shopping List</a></li>
+            <li><button class="btn btn-nav" ng-click="viewMenu()">Menu</button></li>
+            <li><button class="btn btn-nav" ng-click="viewShoppingList()">Shopping List</button></li>
           </ul>
         </nav>
       </div>

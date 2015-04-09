@@ -21,6 +21,10 @@ body {
   padding-bottom: 19px;
 }
 
+.header h3 a {
+  text-decoration: none;
+}
+
 .footer {
   clear: both;
   padding-top: 19px;
@@ -61,13 +65,18 @@ body {
   
 }
 
-.custom-nav > li > a {
+.btn-nav {
   background-color: #EFF6FF;
 }
 
-.custom-nav > li > a:hover,
-.custom-nav > li > a:active,
-.custom-nav > li > a:focus {
+.currentpage {
+  cursor: default;
+}
+
+.currentpage,
+.btn-nav:hover,
+.btn-nav:active,
+.btn-nav:focus {
   background-color: #428BCA;
   color: #FFFFFF;
 }
