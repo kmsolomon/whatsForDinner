@@ -187,10 +187,13 @@
     $ingredientsList = array();
     
     foreach($resultRecipes as $recipe){
-      foreach($recipe['ingredients'] as $in){
-        if(!in_array($in['name'], $ingredientsList)){
-          $ingredientsList[] = $in['name'];
+      if($recipe['ingredients']){
+        foreach($recipe['ingredients'] as $in){
+          if(!in_array($in['name'], $ingredientsList)){
+            $ingredientsList[] = $in['name'];
+          }
         }
+        
       }
     }
     // result recipes is what we're sending back to the call
