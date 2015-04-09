@@ -98,7 +98,7 @@ angular.module('whatsForDinnerApp')
     };
     
     $scope.newMenu = function() {
-      Recipe.getNewRecipes();
+      $location.url('/');
     };
     
     $scope.sortableOptions = {
