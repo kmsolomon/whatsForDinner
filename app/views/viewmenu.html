@@ -9,7 +9,7 @@
       <div ng-repeat="menuitem in menu">
         <div class="menu-recipe" ng-class="{ empty : menuitem.type == 'empty', takeout: menuitem.type == 'takeout' }">
           <div ng-click="viewRecipe(menuitem)">
-            {{menuitem.name}}
+            {{ menuitem.name | limitTo: 30 }}{{menuitem.name.length > 30 ? '...' : ''}}
           </div>           
         </div>
       </div>
