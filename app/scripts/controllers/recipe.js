@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('whatsForDinnerApp')
-  .controller('RecipeCtrl', ['$scope', '$routeParams', '$sce' , 'Recipe', function ($scope, $routeParams, $sce, Recipe) {
+  .controller('RecipeCtrl', ['$scope', '$routeParams', '$sce', '$location', '$rootScope', 'Recipe', function ($scope, $routeParams, $sce, $location, $rootScope, Recipe) {
     
     $scope.recipeId = parseInt($routeParams.recipeId, 10);
 
@@ -14,5 +14,14 @@ angular.module('whatsForDinnerApp')
     }
     
     $scope.html = $sce.trustAsHtml('&deg;');
+    
+    $scope.viewMenu = function(){
+      if($rootScope.params !== ''){
+        var back = '/viewmenu' + $rootScope.params;
+        $location.url(back);
+      } else {
+        $location.url('/');
+      }     
+    };
 
   }]);
