@@ -46,7 +46,6 @@ body {
   margin: 0;
 }
 
-
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */
@@ -94,8 +93,8 @@ body {
   clear: both;
 }
 .menu div {
-  font-size: 24px;
-  text-align: center;
+  font-size: 12px;
+  text-align: left;
 }
 
 .menu-days,
@@ -105,7 +104,7 @@ body {
 
 .menu-day {
   background-color: #B3D4FC;
-  padding: 20px 0;
+  padding: 5px;
   margin-bottom: 5px;
 }
 
@@ -114,7 +113,7 @@ body {
   cursor: pointer;
   margin-bottom: 5px;
   min-height: 1px;
-  padding: 20px 0;
+  padding: 5px;
   position: relative;
 }
 
@@ -125,8 +124,17 @@ body {
 
 .options {
   position: absolute;
-  right: 5px;
-  top: 5px;
+  right: 0px;
+  top: 0px;
+}
+
+.options button {
+  font-size: 10px;
+  padding: 2px;
+}
+
+.options button {
+  
 }
 
 .options ul li {
@@ -141,19 +149,24 @@ body {
   background-color: #E5E5E5;
 }
 
+.options-menu {
+  right: 0;
+  left: auto;
+}
+
 .empty {
-  height: 74px;
+  height: 27px;
   background-color: #F5F5F5;
 }
 
 .day-column {
   float: left;
-  width: 200px;
+  width: 30%;
 }
 
 .recipe-column {
   float: right;
-  width: 500px;
+  width: 70%;
 }
 
 /*************************
@@ -162,6 +175,7 @@ body {
 
 .recipe-details {
   background-color: #EFF6FF;
+  clear: both;
   font-size: 1.0em;
   margin-bottom: 25px;
 }
