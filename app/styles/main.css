@@ -289,3 +289,12 @@ body {
   margin-bottom: 10px;
   padding: 5px;
 }
+
+.selected {
+  color: #AAAAAA;
+  text-decoration: line-through;
+}
+
+.shopping-list {
+  list-style: none; 
+}

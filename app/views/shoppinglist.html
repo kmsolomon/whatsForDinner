@@ -4,7 +4,12 @@
       <h2>Shopping List</h2>
     </div>
     <ul class="shopping-list">
-      <li ng-repeat="ingredient in ingredients">{{ingredient}}</li>
+      <li ng-repeat="ingredient in ingredients">
+        <label ng-class="{selected: ingredient.checked}">
+          <input type="checkbox" ng-model="ingredient.checked">
+           {{ingredient.name}}
+        </label>
+      </li>
     </ul>
   </div>
 </div>

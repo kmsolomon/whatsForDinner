@@ -27,6 +27,16 @@ angular.module('whatsForDinnerApp')
       $scope.ingredients = Recipe.getAllIngredients();
     }
     
+    for(var i = 0; i < $scope.ingredients.length; i++) {
+      var tmp = {
+        name: $scope.ingredients[i],
+        checked: false
+      };
+      
+      $scope.ingredients[i] = tmp;
+      
+    }
+    
     
     
   }]);
