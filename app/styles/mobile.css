@@ -232,7 +232,7 @@ body {
   margin-bottom: 8px;
   padding: 5px;
   position: relative;
-  width: 400px;
+  width: 100%;
 }
 
 .steps-list {
@@ -280,14 +280,13 @@ body {
   font-weight: 700;
 }
 
-#ingredientname {
-  width: 400px;
-}
-
 .add-step-textarea {
   margin-bottom: 5px;
 }
 
+.ingredient-name-input {
+  width: 100%;
+}
 
 .status-success {
   background-color: #BFFFD4;

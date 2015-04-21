@@ -1,54 +1,52 @@
 <div ng-controller="NewRecipeCtrl as newrecipe">
-  <div class="row">
-    <div class="col-md-12 new-recipe">
-      <div ng-class="{'status-success': status == 'Recipe added' , 'status-error': status == 'There was an error adding the recipe'} ">
-        {{status}}
-      </div>
-      <form name="addRecipe" ng-submit="submit()">
-        <div class="form-group">
-          <label for="recipeName" class="recipe-name-label">Recipe Name</label>
-          <input type="text" class="form-control" id="recipeName" ng-model="recipe.name" placeholder="Recipe Name" required>
-        </div>
-        
-        <div class="form-group">
-          <h1 class="ingredients-h1">Ingredients</h1>
-          <div id="ingredients">
-            <div class="ingredients-container">
-              <div class="add-ingredient">
-                <h2>Add Ingredient</h2>
-                <div class="form-inline">
-                  <input type="text" class="form-control amount-input" id="amount" ng-model="newIngredient.amount" placeholder="Amount">
-                  <input type="text" class="form-control ingredient-name-input" id="ingredientname" ng-model="newIngredient.name" placeholder="Ingredient" typeahead="ingred.name for ingred in ingredients | filter:$viewValue | limitTo:8">
-                  <button type="button" ng-click="addIngredient()" class="btn btn-primary add-ingredient-btn">Add</button>
-                </div>
-              </div>
-              <ul class="ingredients-list">
-                <li class="new-recipe-ingredient" ng-repeat="ingredient in recipe.ingredients">{{ingredient.amount}} {{ingredient.name}} 
-                  <button type="button" ng-click="removeIngredient($index)" class="delete-ingredient-btn btn btn-danger">X</button></li>
-              </ul>
-            </div>
-          </div>      
-        </div>
-        
-        <div class="form-group">
-          <h1 class="steps-h1">Steps</h1>
-          <div id="steps">
-            <div class="steps-container">
-              <div class="add-step">
-                <label for="addStep">Add Step</label>
-                <textarea class="form-control add-step-textarea" rows="2" id="addStep" ng-model="newStep" placeholder="New Step"></textarea>
-                <button type="button" ng-click="addStep()" class="btn btn-primary add-step-btn">Add</button>
-              </div>
-              <ol class="steps-list">
-                <li class="new-recipe-step" ng-repeat="step in recipe.steps">{{step}} 
-                  <button type="button" ng-click="removeStep($index)" class="delete-step-btn btn btn-danger">X</button></li>
-              </ol>
-            </div>
-          </div>      
-        </div>
-        
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
+  <div class="new-recipe">
+    <div ng-class="{'status-success': status == 'Recipe added' , 'status-error': status == 'There was an error adding the recipe'} ">
+      {{status}}
     </div>
+    <form name="addRecipe" ng-submit="submit()">
+      <div class="form-group">
+        <label for="recipeName" class="recipe-name-label">Recipe Name</label>
+        <input type="text" class="form-control" id="recipeName" ng-model="recipe.name" placeholder="Recipe Name" required>
+      </div>
+      
+      <div class="form-group">
+        <h1 class="ingredients-h1">Ingredients</h1>
+        <div id="ingredients">
+          <div class="ingredients-container">
+            <div class="add-ingredient">
+              <h2>Add Ingredient</h2>
+              <div class="form-inline">
+                <input type="text" class="form-control amount-input" id="amount" ng-model="newIngredient.amount" placeholder="Amount">
+                <input type="text" class="form-control ingredient-name-input" id="ingredientname" ng-model="newIngredient.name" placeholder="Ingredient" typeahead="ingred.name for ingred in ingredients | filter:$viewValue | limitTo:8">
+                <button type="button" ng-click="addIngredient()" class="btn btn-primary add-ingredient-btn">Add</button>
+              </div>
+            </div>
+            <ul class="ingredients-list">
+              <li class="new-recipe-ingredient" ng-repeat="ingredient in recipe.ingredients">{{ingredient.amount}} {{ingredient.name}} 
+                <button type="button" ng-click="removeIngredient($index)" class="delete-ingredient-btn btn btn-danger">X</button></li>
+            </ul>
+          </div>
+        </div>      
+      </div>
+      
+      <div class="form-group">
+        <h1 class="steps-h1">Steps</h1>
+        <div id="steps">
+          <div class="steps-container">
+            <div class="add-step">
+              <label for="addStep">Add Step</label>
+              <textarea class="form-control add-step-textarea" rows="2" id="addStep" ng-model="newStep" placeholder="New Step"></textarea>
+              <button type="button" ng-click="addStep()" class="btn btn-primary add-step-btn">Add</button>
+            </div>
+            <ol class="steps-list">
+              <li class="new-recipe-step" ng-repeat="step in recipe.steps">{{step}} 
+                <button type="button" ng-click="removeStep($index)" class="delete-step-btn btn btn-danger">X</button></li>
+            </ol>
+          </div>
+        </div>      
+      </div>
+      
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
   </div>
 </div>
