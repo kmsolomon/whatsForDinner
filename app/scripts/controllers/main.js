@@ -2,6 +2,10 @@
 
 angular.module('whatsForDinnerApp')
   .controller('MainCtrl', ['$scope', '$location', '$rootScope', function ($scope, $location, $rootScope) {
+    
+    $rootScope.config = {
+      showNewRecipeBtn: true
+    };
         
     $scope.viewMenu = function(){
       var path = $location.path();

@@ -15,6 +15,8 @@ angular.module('whatsForDinnerApp')
     $rootScope.params = '';
     $scope.menu = Recipe.getRecipesList();
     
+    $scope.showBtn = $rootScope.config.showNewRecipeBtn;
+    
     $scope.viewRecipe = function(recipe){
       if(recipe.type === 'recipe') {
         var path = '/viewrecipe/' + recipe.recipeId;
@@ -56,6 +58,10 @@ angular.module('whatsForDinnerApp')
     
     $scope.newMenu = function() {
       Recipe.getNewRecipes();
+    };
+    
+    $scope.addRecipe = function() {
+      $location.url('/newrecipe');
     };
     
     $scope.sortableOptions = {
