@@ -16,7 +16,7 @@ angular.module('whatsForDinnerApp')
     amount: ''
   };
   
-  $scope.newStep ='';
+  $scope.newStep = '';
   
   $scope.status = '';
   

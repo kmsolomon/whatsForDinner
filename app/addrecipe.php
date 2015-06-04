@@ -151,11 +151,10 @@
           echo 'Query failed: ' . $mysqli->error;
       }
       $insertStep->close();
-      
+      $stepNum++;
     }
   
     $mysqli->commit();
-    
     
   } catch(exception $e) {
     $mysqli->rollback();
