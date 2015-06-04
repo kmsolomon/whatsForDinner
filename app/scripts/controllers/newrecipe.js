@@ -52,6 +52,7 @@ angular.module('whatsForDinnerApp')
     if($scope.newStep !== ''){
       var step = $scope.newStep;
       $scope.recipe.steps.push(step);
+      $scope.newStep = '';
     }
   };
   
