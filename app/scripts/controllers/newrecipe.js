@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('whatsForDinnerApp')
-  .controller('NewRecipeCtrl', ['$scope', '$http', 'Recipe', function ($scope, $http, Recipe) {
+  .controller('NewRecipeCtrl', ['$scope', '$http', '$modal', 'Recipe', function ($scope, $http, $modal, Recipe) {
     
   $scope.ingredients = Recipe.getIngredientsList();
     
@@ -60,33 +60,68 @@ angular.module('whatsForDinnerApp')
   };
   
   $scope.submit = function() {
-    Recipe.addRecipe($scope.recipe)
-    .success(function(){
-      $scope.status = 'Recipe added';
-      $scope.addRecipe.$setPristine();
-      $scope.ingredients = Recipe.getIngredientsList();
     
-      $scope.recipe = {
-        name: '',
-        steps: [],
-        ingredients: []
-      };
+    if($scope.recipe.name){
+        Recipe.addRecipe($scope.recipe)
+      .success(function(){
+        $scope.status = 'Recipe added';
+        $scope.addRecipe.$setPristine();
+        $scope.ingredients = Recipe.getIngredientsList();
       
-      $scope.newIngredient = {
-        name: '',
-        amount: ''
-      };
+        $scope.recipe = {
+          name: '',
+          steps: [],
+          ingredients: []
+        };
+        
+        $scope.newIngredient = {
+          name: '',
+          amount: ''
+        };
+        
+        $scope.newStep ='';
+        
+        
+      })
+      .error(function(data, status){
+        $scope.status = 'There was an error adding the recipe';
+        console.log(status);
+      });
       
-      $scope.newStep ='';
-      
-      
-    })
-    .error(function(data, status){
-      $scope.status = 'There was an error adding the recipe';
-      console.log(status);
+    } else {
+      $scope.status = 'Please give your recipe a name.';
+    }
+    
+  };
+  
+  $scope.animationsEnabled = true;
+
+  $scope.open = function () {
+
+    var modalInstance = $modal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'confirmSubmitModal.html',
+      controller: 'ModalInstanceCtrl'
     });
     
+    modalInstance.result.then(function() {
+      $scope.submit(); 
+    });
+  };
+
+  $scope.toggleAnimation = function () {
+    $scope.animationsEnabled = !$scope.animationsEnabled;
   };
   
 
   }]);
+  
+angular.module('whatsForDinnerApp').controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
+  $scope.ok = function () {
+    $modalInstance.close();
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+});
