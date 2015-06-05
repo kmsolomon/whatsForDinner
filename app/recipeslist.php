@@ -200,6 +200,7 @@
     $resultRecipes = $ingredientsList;
   
   } else {
+    $replacements = array();
     // replace x number of empty recipes, trying not to pick ones already in use
     for($i = 0; $i < 7; $i++){
       if($idsInUse[$i] == null){
@@ -209,7 +210,7 @@
           $randnum = rand(1, count($allRecipeIds));
         }
         $resultRecipes[] = getRecipe($randnum, $mysqli);
-        $idsInUse[] = $randnum;
+        $replacements[] = $randnum;
         
       }
     }
