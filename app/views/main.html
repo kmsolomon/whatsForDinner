@@ -32,7 +32,9 @@
     </div>
   </div>
   <div class="menu-controls">
-    <button class="btn btn-primary" ng-click="addRecipe()" ng-if="showBtn">Add Recipe</button>
+    <span ng-if="showBtn">
+      <button class="btn btn-primary" ng-click="addRecipe()">Add Recipe</button>
+    </span>
     <button class="btn btn-primary" ng-click="newMenu()">New Menu</button>
     <button class="btn btn-primary" ng-click="fillBlanks()">Fill Blanks</button>
     <button class="btn btn-success" ng-click="generateShareUrl()" data-toggle="modal" data-target="#shareModal">Share</button>
