@@ -44,7 +44,7 @@ angular.module('whatsForDinnerApp')
       $scope.recipe.ingredients.push(ingredient);
       $scope.newIngredient.name = '';
       $scope.newIngredient.amount = '';
-    
+      angular.element('#amount').focus();
     }
   };
   
@@ -53,6 +53,7 @@ angular.module('whatsForDinnerApp')
       var step = $scope.newStep;
       $scope.recipe.steps.push(step);
       $scope.newStep = '';
+      angular.element('#addStep').focus();
     }
   };
   
